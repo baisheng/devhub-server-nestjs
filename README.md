@@ -1,4 +1,4 @@
-<h1 align="center">基于 NestJs 架构的连接创作者与粉丝的会员制平台</h1>
+<h1 align="center">基于 NestJs 架构的内容创作者会员制平台</h1>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
