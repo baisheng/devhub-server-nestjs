@@ -40,6 +40,8 @@
 
 路由的默认前缀为 `/api`
 
+服务测试地址 [http://devhub.picker.cc/](http://devhub.picker.cc/)
+
 | 路由            | 描述         |
 | -------------- | ----------- |
 | **/api**       | 显示包的名称、描述和版本 |
@@ -47,7 +49,18 @@
 | **/swagger**   | 使用 Swagger UI 的 API 文档 |
 | **/monitor**   | 一个简单的服务监控页面 |
 
-## 项目安装
+> 路由访问示例: [http://devhub.picker.cc/swagger/auth/](http://devhub.picker.cc/swagger/auth/)
+
+## 项目进展
+- [ ] 待整理
+- [ ] 待整理
+
+## 其他相关项目：
+- 用户 web 端
+- 系统管理端
+- 小程序端
+
+## 本项目安装
 
 ```bash
 $ yarn install
