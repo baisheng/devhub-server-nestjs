@@ -1,0 +1,49 @@
+version: '3.7'
+services:
+  redis:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - 6379
+    volumes:
+      - redis-volume:/bitnami/redis/data
+    networks:
+      - db-tier
+  mongodb:
+    image: 'bitnami/mongodb:latest'
+    networks:
+      - db-tier
+    expose:
+      - 27017
+    volumes:
+      - mongodb-volume:/bitnami
+  devhub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - mongodb
+#    volumes:
+#      _ .:/app
+#      - /app/node_modules
+    networks:
+      - db-tier
+      - traefik
+    command: yarn start:prod
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.devhub.entrypoints=web, web-secure"
+      # 禁止非安全请求
+      #      - "traefik.http.routers.devhub.=true"
+      - "traefik.http.routers.devhub.rule=Host(`devhub.picker.cc`)"
+      - "traefik.docker.network=traefik"
+volumes:
+  redis-volume:
+  mongodb-volume:
+networks:
+  db-tier:
+  traefik:
+    external: true
